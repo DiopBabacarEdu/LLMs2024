@@ -1,40 +1,90 @@
-# Introduction to Large Language Models (LLM)
 
-## Qu'est-ce qu'un LLM ?
-Les **Large Language Models (LLM)** sont des modèles d'intelligence artificielle entraînés sur d'immenses volumes de données textuelles. Ils sont capables de comprendre, générer et transformer du langage naturel grâce à des techniques d'apprentissage profond. Parmi les plus connus, on trouve **GPT (Generative Pre-trained Transformer)**, **BERT** et **T5**.
+# 📄 Attention Is All You Need
 
----
-
-## Pourquoi les LLM sont-ils importants ?
-Les LLM révolutionnent le traitement automatique des langues (NLP) en permettant :  
-- **La génération de texte** : Rédaction automatisée, dialogue humain-like.  
-- **L'analyse de texte** : Classification, résumé et traduction.  
-- **L'amélioration des assistants virtuels** : Comme Siri, Alexa, ou des chatbots avancés.  
-- **L'interprétation de requêtes complexes** : Recherche et extraction d'informations précises.  
+**Auteurs** : *Vaswani et al.*  
+**Date de publication** : *2017*  
+**Contexte** : Cet article a introduit le modèle **Transformer**, une architecture révolutionnaire pour les tâches de traitement du langage naturel (**NLP**).
 
 ---
 
-## Fonctionnement des LLM
-Les LLM utilisent **les Transformers**, une architecture introduite en 2017. Leur fonctionnement repose sur deux concepts majeurs :  
-1. **Self-Attention** : Le modèle pèse chaque mot par rapport aux autres dans une phrase pour en saisir le contexte.  
-2. **Entraînement par pré-traitement** : Les modèles apprennent à prédire les mots manquants ou les phrases suivantes dans des corpus de texte gigantesques.  
+## 🚀 Problème abordé
+
+- Avant le **Transformer**, les modèles pour les tâches séquence-à-séquence (comme la traduction) utilisaient principalement des **Réseaux de Neurones Récurrents (RNN)** et des **LSTMs**.
+- **Limites** de ces approches :
+  - **Coûteuses** en calcul.
+  - Difficultés de **parallélisation**.
+  - Mauvaise gestion des **dépendances à long terme** dans les séquences.
 
 ---
 
-## Enjeux et défis des LLM
-- **Biais dans les données** : Les modèles reproduisent parfois des stéréotypes présents dans les données d'entraînement.  
-- **Coût de calcul** : Entraîner un LLM nécessite d'énormes ressources (GPU/TPU).  
-- **Interprétabilité** : Comprendre pourquoi un LLM génère une réponse reste complexe.  
-- **Éthique** : L'utilisation de LLM dans la désinformation ou d'autres contextes malveillants pose des questions sociétales.  
+## 💡 Contribution principale
+
+Les auteurs proposent une **nouvelle architecture** : le **Transformer**.
+
+- **Caractéristique clé** : Il n'utilise **ni récurrence** ni **convolution**.
+- Il repose entièrement sur le mécanisme **self-attention** (attention par produit scalaire pondéré).
 
 ---
 
-## Exemples concrets
-- **GPT-4** : Utilisé pour des assistants conversationnels et la génération de contenu.  
-- **BERT** : Optimisé pour les tâches de compréhension et de classification textuelle.  
-- **T5** : Modèle génératif adapté à diverses tâches de NLP (traduction, résumé).  
+## 🔑 Innovation : Self-Attention
+
+Le mécanisme **self-attention** permet de pondérer les relations entre les mots d'une séquence indépendamment de leur distance.
+
+### 🧩 Fonctionnement :
+
+1. **Calcul des représentations clés** :
+   Chaque mot est représenté par 3 vecteurs :  
+   - **Query** (Q)  
+   - **Key** (K)  
+   - **Value** (V)  
+
+2. **Produit scalaire** :
+   La similarité entre les mots est mesurée avec un produit scalaire entre **Q** et **K**, puis normalisée avec **Softmax**.
+
+3. **Pondération des valeurs** :
+   Le résultat est utilisé pour pondérer les **V** (valeurs).
 
 ---
 
-## Conclusion
-Les **Large Language Models** marquent une avancée majeure en intelligence artificielle. Ils apportent des solutions innovantes pour le traitement automatique du langage tout en soulevant des défis techniques, éthiques et sociétaux qu'il est crucial d'aborder.
+## ⚙️ Architecture du Transformer
+
+L'architecture est constituée de **6 couches** dans l'encodeur et le décodeur, avec des mécanismes d'attention multi-têtes.
+
+### 📌 Encodeur
+
+- **Self-Attention** : Chaque mot dans une séquence peut s'attarder sur les autres mots pour capturer leurs relations.
+- **Feed-Forward Network** : Des couches denses pour le traitement des représentations.
+
+### 📌 Décodeur
+
+- **Masked Self-Attention** : Similaire à l'encodeur mais masque les mots futurs pour éviter les fuites d'informations.
+- **Cross-Attention** : Relie les représentations du décodeur aux sorties de l'encodeur.
+
+---
+
+## 📊 Avantages du Transformer
+
+1. **Parallélisation** :  
+   Contrairement aux **RNN**, toutes les positions peuvent être calculées simultanément. Cela réduit considérablement le temps d'entraînement.
+
+2. **Gestion des longues dépendances** :  
+   Le mécanisme **self-attention** permet de relier directement tous les mots d'une séquence.
+
+3. **Flexibilité** :  
+   Le modèle s'applique à de nombreuses tâches NLP : traduction, résumé automatique, génération de texte, etc.
+
+---
+
+## 🌍 Applications et impact
+
+Le Transformer a révolutionné le NLP et est à la base de modèles populaires tels que :  
+- **BERT** : Pour l'analyse de texte et l'extraction d'informations.  
+- **GPT** : Pour la génération de texte.  
+- **T5** : Pour les tâches de traduction et de résumé.  
+
+---
+
+## 📝 Conclusion
+
+L'architecture **Transformer** introduite par *"Attention Is All You Need"* a marqué un tournant dans le **traitement du langage naturel** grâce à son efficacité, sa parallélisation et son utilisation ingénieuse du mécanisme **self-attention**.
+
